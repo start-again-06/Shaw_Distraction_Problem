@@ -1,0 +1,8 @@
+# MATLAB Version Requirement
+
+This MATLAB code uses standard matrix operations and plotting functions available since MATLAB R2006a (version 7.2).
+
+**Minimum MATLAB version:** R2006a (7.2)  
+**Recommended MATLAB version:** R2015b or newer, for improved plotting and numerical stability.
+
+If you prefer free alternatives, GNU Octave (version 4.0+) supports most of this code.
