@@ -44,7 +44,7 @@ $$
 ### Regularization Layer
 **Approach:** Tikhonov-style spectral filtering  
 
-- Iterative evaluation across a range of regularization parameters \( \alpha \)  
+- Iterative evaluation across a range of regularization parameters \($$\alpha \$$)  
 - Filter function applied to singular values:
 
 $$
