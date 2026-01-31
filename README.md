@@ -1,65 +1,116 @@
-# Shaw_Distraction_Problem
-
-# 📊 Singular Value Decomposition (SVD) Analysis 🔢
-
-## 🔍 Overview
-This project explores numerical computations using **Singular Value Decomposition (SVD)** and matrix transformations. The code performs **discretization**, **filtering**, and **inverse problem regularization** to analyze system behavior in ill-conditioned settings.
+# Shaw Distraction Problem  
+## Singular Value Decomposition (SVD) Analysis
 
 ---
 
-## ✨ Features
-✅ **Matrix Transformation** – Generates weight matrix `G` using trigonometric functions  
-✅ **Singular Value Decomposition (SVD)** – Decomposes `G` into its principal components (`U`, `S`, `V`)  
-✅ **Regularization Parameter Tuning** – Computes stabilized solutions using Tikhonov-like filtering  
-✅ **Log-Log Plot Analysis** – Visualizes error vs. solution norm to evaluate stability
+## System Overview
+This project analyzes the **Shaw distraction inverse problem** using **Singular Value Decomposition (SVD)** to study numerical instability and regularization in ill-conditioned systems. The implementation demonstrates how filtering and regularization techniques improve solution stability when solving inverse problems.
+
+The workflow combines matrix construction, SVD-based decomposition, regularization parameter tuning, and visual diagnostics.
 
 ---
 
-## 🛠 Installation
-Ensure you have **MATLAB** or **GNU Octave** installed to run this script.
+## High-Level Architecture
+
+### Data and Discretization Layer
+- Discretized domain based on the Shaw problem formulation  
+- Transformation matrix constructed using trigonometric functions  
+- Numerical safeguards applied to handle singular behavior  
 
 ---
 
-## 📑 Computation Breakdown
-
-### 1️⃣ Weight Matrix (G) Construction
-- Constructs transformation matrix `G` using trigonometric operations  
-- Handles potential **singularities** in function evaluations  
-
-### 2️⃣ Singular Value Decomposition (SVD) Analysis
-- Performs SVD on matrix `G`:  
-  \[
-  G = U \cdot S \cdot V^T
-  \]  
-- Analyzes **rank**, **condition number**, and **singular values**
-
-### 3️⃣ Regularization Parameter (α) Optimization
-- Iteratively computes **filtered solutions** across a range of `α` values  
-- Applies filtering function:  
-  \[
-  f(i) = \frac{s(i)^2}{s(i)^2 + \alpha(j)^2}
-  \]  
-- Balances **solution stability** and **accuracy**
-
-### 4️⃣ Visualization & Analysis
-- **Stair-step plots** show filtered transformation results  
-- **Log-log plots** reveal tradeoff between reconstruction error and solution norm
+### Matrix Construction Layer
+- Weight matrix **G** generated from analytical expressions  
+- Represents the forward operator of the inverse problem  
+- Ill-conditioned by design to illustrate numerical instability  
 
 ---
 
-## 📊 Results & Insights
-- **Singular values** dictate numerical sensitivity and inversion robustness  
-- **Tikhonov regularization** filters unstable components from small singular values  
-- **Log-log analysis** identifies the optimal α for minimal error and acceptable norm
+### Decomposition Layer
+**Method:** Singular Value Decomposition  
+
+$$
+\[
+G = U \cdot S \cdot V^T
+\]
+$$
+
+- Decomposes system into orthogonal basis components  
+- Extracts singular values to analyze conditioning  
+- Evaluates rank and numerical sensitivity  
 
 ---
 
-## 🔚 Conclusion
-This project demonstrates how **SVD-based filtering** improves **numerical stability** in solving **inverse problems**. It provides a structured approach for **analyzing and regularizing ill-conditioned systems** using mathematical rigor and visual validation.
+### Regularization Layer
+**Approach:** Tikhonov-style spectral filtering  
+
+- Iterative evaluation across a range of regularization parameters \( \alpha \)  
+- Filter function applied to singular values:
+
+$$
+\[
+f(i) = \frac{s(i)^2}{s(i)^2 + \alpha^2}
+\]
+$$
+
+- Suppresses contributions from small singular values  
+- Balances stability and reconstruction accuracy  
 
 ---
 
-## 📜 License
+### Solution Reconstruction Layer
+- Computes regularized inverse solutions  
+- Evaluates solution norm and reconstruction error  
+- Tracks trade-off behavior across regularization parameters  
 
-🔓 **MIT License** – Free to use and modify!
+---
 
+### Visualization & Diagnostics Layer
+- Stair-step plots for filtered spectral components  
+- Log-log plots of reconstruction error versus solution norm  
+- Visual identification of optimal regularization parameter  
+
+---
+
+## Execution Flow
+1. Discretize the Shaw problem domain  
+2. Construct transformation matrix G  
+3. Perform Singular Value Decomposition  
+4. Analyze singular values and conditioning  
+5. Apply spectral filtering across multiple α values  
+6. Reconstruct regularized solutions  
+7. Visualize error-norm trade-offs using log-log plots  
+
+---
+
+## Results & Insights
+- Small singular values dominate numerical instability  
+- SVD reveals sensitivity structure of the inverse problem  
+- Regularization suppresses unstable components  
+- Log-log analysis helps identify optimal regularization strength  
+
+---
+
+## Scalability & Extensibility
+- Can be extended to other ill-posed inverse problems  
+- Alternative regularization methods can be incorporated  
+- Useful for testing parameter selection strategies  
+- Suitable for numerical analysis and inverse problem research  
+
+---
+
+## Applications
+- Inverse problem regularization studies  
+- Numerical linear algebra education  
+- Ill-conditioned system analysis  
+- Validation of SVD-based filtering techniques  
+
+---
+
+## Dependencies
+- MATLAB or GNU Octave  
+
+---
+
+## License
+MIT License. Free to use, modify, and distribute for academic and research purposes.
